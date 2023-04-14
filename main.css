@@ -1,0 +1,31 @@
+.title{
+    text-align: center;
+}
+
+.nameinput{
+    display: flex;
+    justify-content: center;
+}
+
+.search{
+    display: flex;
+    width:30%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
+
+#searchbtn{
+    background-color: rgb(177, 177, 232);
+    border-radius: 10px;
+    width: 100%;
+}
+
+#result{
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+.contribute{
+    text-align: center;
+}
