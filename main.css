@@ -5,6 +5,12 @@
 .nameinput{
     display: flex;
     justify-content: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.nameinput input{
+    margin: 5px;
 }
 
 .search{
@@ -13,12 +19,18 @@
     margin-left: auto;
     margin-right: auto;
     margin-top: 15px;
+    height:35px;
 }
 
 #searchbtn{
     background-color: rgb(177, 177, 232);
     border-radius: 10px;
     width: 100%;
+    border-style: none;
+}
+
+#searchbtn:hover{
+    background-color: rgb(152, 152, 228);
 }
 
 #result{
@@ -26,6 +38,22 @@
     background-color: antiquewhite;
 }
 
+#result div:hover{
+    background-color: rgb(253, 217, 170);
+}
+
 .contribute{
     text-align: center;
+}
+
+#cardImg{
+    transform: scale(0.5, 0.5);
+}
+
+#playerImg{
+    transform: scale(0.5, 0.5);
+}
+
+#positionImg{
+    transform: scale(0.5, 0.5);
 }
