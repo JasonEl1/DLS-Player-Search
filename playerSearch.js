@@ -2,6 +2,8 @@ const players = 'https://raw.githubusercontent.com/theshinramen/DLS-Files/main/d
 const imgs = 'https://raw.githubusercontent.com/theshinramen/DLS-Files/main/playerphotos/DLS23/';
 const card = 'https://raw.githubusercontent.com/theshinramen/DLS-Card-Creator/main/DLS23/assets/card/';
 const position = 'https://raw.githubusercontent.com/theshinramen/DLS-Card-Creator/main/DLS23/assets/position/';
+const nations = 'https://raw.githubusercontent.com/MTN73/DLS-Player-Search/main/nations.json';
+const flags = 'https://raw.githubusercontent.com/theshinramen/DLS-Files/main/flags/';
 
 document.getElementById("searchbtn").addEventListener("click", searchPlayer);
 
@@ -10,6 +12,22 @@ document.addEventListener("keydown",(event) =>{
         searchPlayer();
     }
 });
+
+function removeAll(found){
+    document.getElementById("result").innerHTML = "";
+    for(let i = 0;i<found;i++){
+        document.getElementById(found).remove();
+    }
+}
+
+function searchNation(nationality){
+    /*fetch(nations)
+    .then(response => response.json())
+    .then(data => {
+        return data.indexOf(nationality);
+    });*/
+    return nation.indexOf(nationality);
+}   
 
 function searchPlayer(){
     removeAll();
@@ -66,9 +84,13 @@ function searchPlayer(){
                             context.fillText(player.Foot, 421, 58);
 
                             //flag
-                            searchNation();
+                            let flagImg = new Image();
+                            flagImg.src = flags + searchNation(player.Nationality) + ".png";
+                            flagImg.onload = function(){
+                                context.drawImage(flagImg,202,128,positionImg.naturalWidth,positionImg.naturalHeight);
+                            }
                         }
-                    }
+                        }
                 }
                 found++;
             }
@@ -109,19 +131,189 @@ function ratingToType(rating,isGK){
     return playerType;
 }
 
-function removeAll(found){
-    document.getElementById("result").innerHTML = "";
-    for(let i = 0;i<found;i++){
-        document.getElementById(found).remove();
-    }
-}
-
-function searchNation(nationality){
-    fetch('nations.json')
-    .then(response => response.json())
-    .then(data => {
-        for(nation in data){
-            console.log(nation);
-        }
-    });
-}
+const nation = [
+    "Spain",
+    "Italy",
+    "France",
+    "Zimbabwe",
+    "El Salvador",
+    "Haiti",
+    "Cuba",
+    "Saint Kitts and Nevis",
+    "Puerto Rico",
+   "Armenia",
+    "Estonia",
+    "Burundi",
+    "Tanzania",
+    "Russia",
+    "Cyprus",
+    "Moldova",
+    "Faroe Islands",
+    "Kosovo",
+    "Saint Vincent and the Grenadines",
+    "Bermuda",
+    "Syria",
+    "Uzbekistan",
+    "Panama",
+    "Kazakhstan",
+    "Cameroon",
+    "San Marino",
+    "Democratic Republic of the Congo",
+    "Kuwait",
+    "Liechtenstein",
+    "Azerbaijan",
+    "Luxembourg",
+    "Libya",
+    "Zambia",
+    "Guyana",
+    "Antigua and Barbuda",
+    "England",
+    "Iraq",
+    "Jordan",
+    "Qatar",
+    "Bahrain",
+    "New Caledonia",
+    "French Polynesia",
+    "Thailand",
+    "Vietnam",
+    "Malaysia",
+    "Indonesia",
+    "Scotland",
+    "United Arab Emirates",
+    "Singapore",
+    "Hong Kong",
+    "USSR",
+    "Bangladesh",
+    "Republic of the Congo",
+    "Mozambique",
+    "Curacao",
+    "Philippines",
+    "Mauritania",
+    "Greece",
+    "Myanmar",
+    "Kyrgyzstan",
+    "Laos",
+    "Benin",
+    "Chad",
+    "Belize",
+    "Sri Lanka",
+    "Lebanon",
+    "Nepal",
+    "Yemen",
+    "Ghana",
+    "Bahamas",
+    "Bhutan",
+    "Botswana",
+    "Cambodia",
+    "Dominica",
+    "Dominican Republic",
+    "Fiji",
+    "Madagascar",
+    "Mauritius",
+    "Mongolia",
+    "Egypt",
+    "Montserrat",
+    "Namibia",
+    "Nicaragua",
+    "Rwanda",
+    "Seychelles",
+    "Eswatini",
+    "United Kingdom",
+    "Central African Republic",
+    "Equatorial Guinea",
+    "Suriname",
+    "Uruguay",
+    "Comoros",
+    "Palestine",
+    "Guinea-Bissau",
+    "South Sudan",
+    "Ivory Coast",
+    "Germany",
+    "Mexico",
+    "Paraguay",
+    "Nigeria",
+    "Niger",
+    "United States of America",
+    "Colombia",
+    "Poland",
+    "Sweden",
+    "Ulster",
+    "Japan",
+    "Netherlands",
+    "Morocco",
+    "Ireland",
+    "Australia",
+    "Chile",
+    "Tunisia",
+    "Senegal",
+    "Iran",
+    "Saudi Arabia",
+    "South Korea",
+    "Ecuador",
+    "Croatia",
+    "Wales",
+    "Honduras",
+    "Venezuela",
+    "South Africa",
+    "Costa Rica",
+    "Trinidad and Tobago",
+    "Canada",
+    "China",
+    "Jamaica",
+    "North Korea",
+    "Brazil",
+    "Barbados",
+    "India",
+    "Belgium",
+    "Switzerland",
+    "Denmark",
+    "Bulgaria",
+    "Togo",
+    "Norway",
+    "Slovakia",
+    "Israel",
+    "Argentina",
+    "Ukraine",
+    "Peru",
+    "Mali",
+    "Romania",
+    "Guinea",
+    "Serbia",
+    "Montenegro",
+    "Bosnia and Herzegovina",
+    "Iceland",
+    "Algeria",
+    "Czech Republic",
+    "Hungary",
+    "Albania",
+    "Somalia",
+    "Oman",
+    "Slovenia",
+    "Angola",
+    "Belarus",
+    "Lithuania",
+    "Turkey",
+    "Kenya",
+    "Democratic Republic of the Congo",
+    "Cape Verde",
+    "Austria",
+    "Guadeloupe",
+    "Finland",
+    "Uganda",
+    "Malta",
+    "Gabon",
+    "Sierra Leone",
+    "Pakistan",
+    "Guatemala",
+    "Yugoslavia",
+    "Liberia",
+    "New Zealand",
+    "Bolivia",
+    "Portugal",
+    "Republic of The Gambia",
+    "Georgia",
+    "World",
+    "Grenada",
+    "Macedonia",
+    "Latvia"
+]
