@@ -45,15 +45,3 @@
 .contribute{
     text-align: center;
 }
-
-#cardImg{
-    transform: scale(0.5, 0.5);
-}
-
-#playerImg{
-    transform: scale(0.5, 0.5);
-}
-
-#positionImg{
-    transform: scale(0.5, 0.5);
-}

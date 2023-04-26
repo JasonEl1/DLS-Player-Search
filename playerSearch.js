@@ -12,8 +12,7 @@ document.addEventListener("keydown",(event) =>{
 });
 
 function searchPlayer(){
-    
-    document.getElementById("result").innerHTML = "";
+    removeAll();
 
     fetch(players)
     .then(response => response.json())
@@ -24,33 +23,54 @@ function searchPlayer(){
 
         for(const player of data){
             if(player["First Name"].toLowerCase().includes(player_fname.toLowerCase()) && player["Last Name"].toLowerCase().includes(player_lname.toLowerCase())){
-                found++;
 
                 let resultDiv = document.createElement("div");
-                let content = document.createTextNode(JSON.stringify(player));
-                resultDiv.appendChild(content);
+                // let content = document.createTextNode(JSON.stringify(player));
+                // resultDiv.appendChild(content);
+
+                let cardCanvas = document.createElement("canvas");
+                cardCanvas.id = found;
+                resultDiv.appendChild(cardCanvas);
 
                 document.getElementById("result").appendChild(resultDiv);
 
-                let playerType = ratingToType(player["Rating"],player["Handling (GK)"]!="")
-                let cardImgUrl = card + playerType + ".png"
-                let cardImg = document.createElement("img");
-                cardImg.src = cardImgUrl;
-                cardImg.id = "cardImg";
-                resultDiv.appendChild(cardImg);
+                let context = document.getElementById(found).getContext('2d');
 
-                if(player["Player ID"]!=""){
-                    let playerImg = document.createElement("img");
-                    const imgUrl = imgs + player["Player ID"] + ".png";
-                    playerImg.src = imgUrl;
-                    playerImg.id = "playerImg";
-                    //resultDiv.appendChild(playerImg);
+                //card
+                let playerType = ratingToType(player["Rating"],player["Handling (GK)"]!="")
+                let cardImg = new Image();
+                cardImg.src = card + playerType + ".png";
+
+                cardImg.onload = function(){
+                    let imgWidth = cardImg.width;
+                    let imgHeight = cardImg.height;
+                    cardCanvas.width = imgWidth;
+                    cardCanvas.height = imgHeight;
+                    context.drawImage(cardImg,0,0,cardCanvas.width,cardCanvas.height);
+
+
+                    if(player["Player ID"]!=""){
+                        let playerImg = new Image();
+                        playerImg.src = imgs + player["Player ID"] + ".png";
+                        playerImg.onload = function(){
+                            //player position
+                            let positionImg = new Image();
+                            positionImg.src = position + player.Position + ".png";
+                            positionImg.onload = function(){
+                                context.drawImage(positionImg,202,90);
+                            }
+                            context.drawImage(playerImg,4, 69, 193, 193);
+                            //foot
+                            context.fillStyle = 'rgba(0, 0, 0, 0.5)';
+                            context.font = "bold 25px Renogare";
+                            context.fillText(player.Foot, 421, 58);
+
+                            //flag
+                            searchNation();
+                        }
+                    }
                 }
-                let playerPositionUrl = position + player.Position + ".png";
-                let positionImg = document.createElement("img");
-                positionImg.src = playerPositionUrl;
-                positionImg.id = "positionImg";
-                //resultDiv.appendChild(positionImg);
+                found++;
             }
         }
         document.getElementById("count").innerHTML = found + " Results";
@@ -87,4 +107,21 @@ function ratingToType(rating,isGK){
         }
     }
     return playerType;
+}
+
+function removeAll(found){
+    document.getElementById("result").innerHTML = "";
+    for(let i = 0;i<found;i++){
+        document.getElementById(found).remove();
+    }
+}
+
+function searchNation(nationality){
+    fetch('nations.json')
+    .then(response => response.json())
+    .then(data => {
+        for(nation in data){
+            console.log(nation);
+        }
+    });
 }
