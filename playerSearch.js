@@ -5,11 +5,13 @@ const position = 'https://raw.githubusercontent.com/theshinramen/DLS-Card-Creato
 const nations = 'https://raw.githubusercontent.com/MTN73/DLS-Player-Search/main/nations.json';
 const flags = 'https://raw.githubusercontent.com/theshinramen/DLS-Files/main/flags/';
 
-document.getElementById("searchbtn").addEventListener("click", searchPlayer);
+document.getElementById("searchbtn").addEventListener("click", searchByName);
+
+//add search by position and search by country
 
 document.addEventListener("keydown",(event) =>{
     if(event.key=="Enter"){
-        searchPlayer();
+        searchByName();
     }
 });
 
@@ -19,17 +21,14 @@ function removeAll(found){
         document.getElementById(found).remove();
     }
 }
-
-function searchNation(nationality){
-    /*fetch(nations)
+    let nation;
+    fetch(nations)
     .then(response => response.json())
     .then(data => {
-        return data.indexOf(nationality);
-    });*/
-    return nation.indexOf(nationality);
-}   
+        nation = data;
+    });
 
-function searchPlayer(){
+function searchByName(){
     removeAll();
 
     fetch(players)
@@ -71,23 +70,38 @@ function searchPlayer(){
                         let playerImg = new Image();
                         playerImg.src = imgs + player["Player ID"] + ".png";
                         playerImg.onload = function(){
+                            context.drawImage(playerImg,4, 69, 193, 193);
+
+                            //foot
+                            context.fillStyle="#000000";
+                            context.font = "bold 25px Renogare";
+                            context.fillText(player.Foot, 421, 58);
+
+                            //height
+                            context.font = "bold 25px Renogare";
+                            context.fillText(player["Height (cm)"],311,58);
+
+                            context.textAlign = 'center';
+
+                            //First Name
+                            context.font = "bold 16px Renogare";
+                            context.fillText(player["First Name"], 110, 285);
+
+                            // Last Name
+                            context.font = "bold 25px Renogare";
+                            context.fillText(player["Last Name"], 110, 310);
+
                             //player position
                             let positionImg = new Image();
                             positionImg.src = position + player.Position + ".png";
                             positionImg.onload = function(){
                                 context.drawImage(positionImg,202,90);
-                            }
-                            context.drawImage(playerImg,4, 69, 193, 193);
-                            //foot
-                            context.fillStyle = 'rgba(0, 0, 0, 0.5)';
-                            context.font = "bold 25px Renogare";
-                            context.fillText(player.Foot, 421, 58);
-
-                            //flag
-                            let flagImg = new Image();
-                            flagImg.src = flags + searchNation(player.Nationality) + ".png";
-                            flagImg.onload = function(){
+                                //flag
+                                let flagImg = new Image();
+                                flagImg.src = flags + nation.indexOf(player.Nationality) + ".png";
+                                flagImg.onload = function(){
                                 context.drawImage(flagImg,202,128,positionImg.naturalWidth,positionImg.naturalHeight);
+                            }
                             }
                         }
                         }
@@ -100,6 +114,14 @@ function searchPlayer(){
             document.getElementById("result").innerHTML = "Player not found."
         }
     });
+}
+
+function searchByPosition(){
+
+}
+
+function searchByCountry(){
+    
 }
 
 function ratingToType(rating,isGK){
@@ -131,7 +153,7 @@ function ratingToType(rating,isGK){
     return playerType;
 }
 
-const nation = [
+/*const nation = [
     "Spain",
     "Italy",
     "France",
@@ -141,7 +163,7 @@ const nation = [
     "Cuba",
     "Saint Kitts and Nevis",
     "Puerto Rico",
-   "Armenia",
+    "Armenia",
     "Estonia",
     "Burundi",
     "Tanzania",
@@ -316,4 +338,4 @@ const nation = [
     "Grenada",
     "Macedonia",
     "Latvia"
-]
+]*/
