@@ -1,9 +1,9 @@
 # DLS-Player-Search
 
-This is a work-in-progress. Note that the database has still not been updated for the DLS24 update.
-
 Search for Dream League Soccer players out of a database of 800+ players. This project makes use of a DLS player database by @theshinramen on Github : https://github.com/theshinramen/DLS-Files.
 
+> [!NOTE]
+> Note that the database has still not been updated for the DLS24 update.
 
 ### Instructions:
 
