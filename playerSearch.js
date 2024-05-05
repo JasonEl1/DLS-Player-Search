@@ -119,7 +119,7 @@ function searchByName() {
                 } else if (stat >= 70) {
                   context.fillStyle = yellow;
                 } else if (stat >= 60) {
-                  context.fillyStyle = orange;
+                  context.fillStyle = orange;
                 } else {
                   context.fillStyle = red;
                 }
@@ -136,7 +136,7 @@ function searchByName() {
                 } else if (stat >= 70) {
                   context.fillStyle = yellow;
                 } else if (stat >= 60) {
-                  context.fillyStyle = orange;
+                  context.fillStyle = orange;
                 } else {
                   context.fillStyle = red;
                 }
@@ -153,7 +153,7 @@ function searchByName() {
                 } else if (stat >= 70) {
                   context.fillStyle = yellow;
                 } else if (stat >= 60) {
-                  context.fillyStyle = orange;
+                  context.fillStyle = orange;
                 } else {
                   context.fillStyle = red;
                 }
@@ -170,7 +170,7 @@ function searchByName() {
                 } else if (stat >= 70) {
                   context.fillStyle = yellow;
                 } else if (stat >= 60) {
-                  context.fillyStyle = orange;
+                  context.fillStyle = orange;
                 } else {
                   context.fillStyle = red;
                 }
@@ -187,7 +187,7 @@ function searchByName() {
                 } else if (stat >= 70) {
                   context.fillStyle = yellow;
                 } else if (stat >= 60) {
-                  context.fillyStyle = orange;
+                  context.fillStyle = orange;
                 } else {
                   context.fillStyle = red;
                 }
@@ -204,7 +204,7 @@ function searchByName() {
                 } else if (stat >= 70) {
                   context.fillStyle = yellow;
                 } else if (stat >= 60) {
-                  context.fillyStyle = orange;
+                  context.fillStyle = orange;
                 } else {
                   context.fillStyle = red;
                 }
@@ -221,7 +221,7 @@ function searchByName() {
                 } else if (stat >= 70) {
                   context.fillStyle = yellow;
                 } else if (stat >= 60) {
-                  context.fillyStyle = orange;
+                  context.fillStyle = orange;
                 } else {
                   context.fillStyle = red;
                 }
